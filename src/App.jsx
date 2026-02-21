@@ -158,7 +158,7 @@ const App = () => {
 
   // AI Logic Loop
   useEffect(() => {
-    if (gameMode === 'maker' && gameStatus === 'playing') {
+    if (gameMode === 'maker' && gameStatus === 'playing' && phase === 'playing') {
       const timer = setTimeout(() => {
         const { guess, newPool } = getNextAiGuess(guesses, aiPool.length > 0 ? aiPool : generateAllPossibilities());
         setAiPool(newPool);
@@ -166,7 +166,7 @@ const App = () => {
       }, 800);
       return () => clearTimeout(timer);
     }
-  }, [guesses, gameMode, gameStatus]);
+  }, [guesses, gameMode, gameStatus, phase]);
 
   const startNewGame = (mode) => {
     setGameMode(mode);
